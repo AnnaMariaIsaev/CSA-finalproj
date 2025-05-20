@@ -1,4 +1,5 @@
 
+
 public class Runner {
 
 	public static void main(String[] args) {
@@ -6,6 +7,12 @@ public class Runner {
 
 		System.out.println("hello world");
 		System.out.println("testing");
+		
+		GameLogic.createPlayer();
+		GameLogic.createNPC();
+		
+	        
 	}
+
 
 }
