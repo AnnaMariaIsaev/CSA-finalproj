@@ -4,14 +4,14 @@ public class Player {
 
 	private String name;
 	private int health;
-	private String currentWord;
+	private static String currentWord;
 	private static ArrayList<String> guessedLetters;
 	private static ArrayList<String> incorrectLetters;
 	
 	public Player(String name, String currentWord) {
 		
 		this.name = name;
-		this.currentWord = currentWord;
+		Player.currentWord = currentWord;
 		health = 10;
 		
 	}
@@ -35,7 +35,7 @@ public class Player {
 		this.health = health;
 	}
 
-	public String getCurrentWord() {
+	public static String getCurrentWord() {
 		return currentWord;
 	}
 
@@ -43,7 +43,7 @@ public class Player {
 		this.currentWord = currentWord;
 	}
 
-	public ArrayList<String> getGuessedLetters() {
+	public static ArrayList<String> getGuessedLetters() {
 		return guessedLetters;
 	}
 
@@ -51,8 +51,8 @@ public class Player {
 		guessedLetters.add(letter);
 	}
 	
-	public static void addIncorretLetters(String letter) {
-		guessedLetters.add(letter);
+	public static void addIncorrectLetters(String letter) {
+		incorrectLetters.add(letter);
 	}
 
 

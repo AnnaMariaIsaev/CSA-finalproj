@@ -11,6 +11,7 @@ public class Runner {
 		GameLogic.createPlayer();
 		GameLogic.createNPC();
 		
+		GameLogic.guessLetterP();
 	        
 	}
 
