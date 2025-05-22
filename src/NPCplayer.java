@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class NPCplayer extends Player {
 
@@ -9,10 +10,11 @@ public class NPCplayer extends Player {
 	 * 
 	 */
 	
-	private int health;
+	private static int health;
 	private String currWord;
 
-	private ArrayList<String> guessedLetters;
+	private static ArrayList<String> possibleLetters;
+	
 	private static String[] names = {"Kerry Carpenter", "Tisha Andersen", 
 			"Gerardo Vaughn", "Palmer Riggs", "Connie Moyer", "Javier Mcneil", 
 			"Manual Allen", "Anderson Watkins"};
@@ -21,6 +23,12 @@ public class NPCplayer extends Player {
 		// TODO Auto-generated constructor stub
 		super(name, currentWord);
 		health = 10;
+		
+		possibleLetters = new ArrayList<>(Arrays.asList(
+			    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
+			    "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+			));
+
 	
 		
 	}
@@ -40,7 +48,7 @@ public class NPCplayer extends Player {
 	
 	//auto generated getters and setters
 	
-	public int getNPCHealth() {
+	public static int getNPCHealth() {
 		return health;
 	}
 
@@ -56,6 +64,7 @@ public class NPCplayer extends Player {
 		this.currWord = currWord;
 	}
 
+	/*
 	public ArrayList<String> getNPCGuessedLetters() {
 		return guessedLetters;
 	}
@@ -64,6 +73,11 @@ public class NPCplayer extends Player {
 		this.guessedLetters = guessedLetters;
 	}
 	
+	*/
+	
+	public static ArrayList<String> getPossibleLetters() {
+		return possibleLetters;
+	}
 	
 
 }

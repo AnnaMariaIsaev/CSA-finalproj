@@ -7,8 +7,6 @@ public class GameLogic {
 	
 	public static void createPlayer() {
 		
-
-
 	        System.out.print("Enter your name: ");
 	        String name = scanner.nextLine();
 	        
@@ -34,21 +32,26 @@ public class GameLogic {
 		System.out.println("guess a letter");
 		String letter = scanner.nextLine();
 		
-		if(Player.getGuessedLetters().contains(letter)) {
+		if(Player.getPossibleLetters().contains(letter)) {
+			
+			System.out.println("letter selected: " + letter);
+			Player.removeGuessedLetter(letter);
+			
+		} else {
 			letter = "";
 			System.out.println("Select a new letter");
 			letter = scanner.nextLine();
-		} else {
-			System.out.println("letter selected: " + letter);
 		}
 		
-		Player.addGuessedLetters(letter);
 		
 		String word = Player.getCurrentWord();
 		int len = word.length();
 		
 		if(word.contains(letter) == false) {
+			
 			Player.addIncorrectLetters(letter);
+
+			Player.setHealth(Player.getHealth() - 1);
 			
 			//add code to display the list of incorrect letters on the screen
 			
