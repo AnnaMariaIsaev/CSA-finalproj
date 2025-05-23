@@ -4,11 +4,10 @@ import java.awt.event.*;
 
 public class Runner extends JPanel implements ActionListener, MouseListener, KeyListener {
 
-    final int game = 0;
-    final int kill = 0;
-    final boolean win = false;
-    final boolean dead = false;
-    int current = game;
+
+=======
+public class Runner {
+	
 
     int waveTimer = 5;
     long ellapseTime = 0;
@@ -16,10 +15,13 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
     int lives = 5;
     int score = 0;
 
+
     Font myFont = new Font("Courier", Font.BOLD, 40);
     Background background = new Background();
     int width = 600;
     int height = 600;
+	        
+	}
 
     public Runner() {
         JFrame f = new JFrame("Duck Hunt");
@@ -49,6 +51,17 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 
     public static void main(String[] arg) {
         new Runner();
+      
+      System.out.println("hello world");
+		System.out.println("testing");
+		
+		GameLogic.createPlayer();
+		GameLogic.createNPC();
+		
+		while(Player.getHealth() > 0 && NPCplayer.getNPCHealth() >0) {
+			GameLogic.guessLetterP();
+		}
+      
     }
 
     // Stub methods for the interfaces

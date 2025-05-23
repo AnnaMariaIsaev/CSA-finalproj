@@ -1,18 +1,29 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Player {
 
 	private String name;
-	private int health;
-	private String currentWord;
-	private static ArrayList<String> guessedLetters;
+	private static int health;
+	private static String currentWord;
+	
+	private static ArrayList<String> possibleLetters;
 	private static ArrayList<String> incorrectLetters;
 	
 	public Player(String name, String currentWord) {
 		
 		this.name = name;
-		this.currentWord = currentWord;
+		//Player.currentWord = currentWord;
+	
 		health = 10;
+		
+		incorrectLetters = new ArrayList<>();
+		possibleLetters = new ArrayList<>(Arrays.asList(
+			    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
+			    "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+			));
+
+	
 		
 	}
 
@@ -27,34 +38,42 @@ public class Player {
 		this.name = name;
 	}
 
-	public int getHealth() {
+	public static int getHealth() {
 		return health;
 	}
 
-	public void setHealth(int health) {
-		this.health = health;
+	public static void setHealth(int num) {
+		health = num;
 	}
 
-	public String getCurrentWord() {
+	public static String getCurrentWord() {
 		return currentWord;
 	}
 
 	public void setCurrentWord(String currentWord) {
-		this.currentWord = currentWord;
+		Player.currentWord = currentWord;
 	}
 
-	public ArrayList<String> getGuessedLetters() {
-		return guessedLetters;
+	
+	public static void removeGuessedLetter(String letter) {
+		int val = possibleLetters.indexOf(letter);
+		possibleLetters.remove(val);
 	}
 
+	/*
 	public static void addGuessedLetters(String letter) {
 		guessedLetters.add(letter);
 	}
+	*/
 	
-	public static void addIncorretLetters(String letter) {
-		guessedLetters.add(letter);
+	public static void addIncorrectLetters(String letter) {
+		incorrectLetters.add(letter);
 	}
-
+	
+	
+	public static ArrayList<String> getPossibleLetters() {
+		return possibleLetters;
+	}
 
 
 	

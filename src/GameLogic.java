@@ -7,8 +7,6 @@ public class GameLogic {
 	
 	public static void createPlayer() {
 		
-
-
 	        System.out.print("Enter your name: ");
 	        String name = scanner.nextLine();
 	        
@@ -30,17 +28,51 @@ public class GameLogic {
 		
 	}
 	
-	public void guessLetterP() {
+	public static void guessLetterP() {
 		System.out.println("guess a letter");
 		String letter = scanner.nextLine();
 		
-		Player.addGuessedLetters(letter);
+		if(Player.getPossibleLetters().contains(letter)) {
+			
+			System.out.println("letter selected: " + letter);
+			Player.removeGuessedLetter(letter);
+			
+		} else {
+			letter = "";
+			System.out.println("Select a new letter");
+			letter = scanner.nextLine();
+		}
+		
+		
+		String word = Player.getCurrentWord();
+		int len = word.length();
+		
+		if(word.contains(letter) == false) {
+			
+			Player.addIncorrectLetters(letter);
+
+			Player.setHealth(Player.getHealth() - 1);
+			
+			//add code to display the list of incorrect letters on the screen
+			
+		}
+		
+		
+		for(int i = 0; i < len-1; i++) {
+			
+			if(word.substring(i, i+1).equals(letter)) {
+				
+				//put code here to reveal the letters in the -- placeholder
+				
+			}
+			
+		}
 		
 		//TO DO:
 		/*
-		 * 1) find a way to check if the guessed letter is in the word
+		 * 1) find a way to check if the guessed letter is in the word /// DONE
 		 * 2) if it isn't, add to incorrect guesses which will display
-		 * 		on the screen
+		 * 		on the screen //// DONE
 		 * 3) correctly guessed letters should show in the word which 
 		 * 		is initially hidden by ----- 
 		 * 
