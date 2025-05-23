@@ -24,7 +24,7 @@ public class Background {
 		height = 800;
 		x = 0;
 		y = 0;
-		tx = AffineTransform.getTranslateInstance(0, 0);
+		tx = AffineTransform.getTranslateInstance(0, 0); //
 		init(x, y); // initialize the location of the image
 					// use your variables
 	}
