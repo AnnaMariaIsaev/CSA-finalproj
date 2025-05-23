@@ -3,40 +3,53 @@ import java.util.Arrays;
 
 public class Dictionary {
 
+	private int difficulty;
+	
 	/*
 	 * since there are three rounds per match, 
 	 * we will use arraylists to make sure the words dontget repeated
 	 * 
 	 */
 	
-	private ArrayList<String> easyWords = new ArrayList<>(Arrays.asList(
-			"apple", "brave", "chair", "dream", "eagle", "flame", 
-			"grape", "house", "ivory", "jelly", "knife", "lemon", 
-			"mango", "noble", "ocean", "piano", "queen", "river", "stone", 
-			"table"
-		));
+	private ArrayList<String> easyWords;
 	
-	private ArrayList<String> mediumWords = new ArrayList<>(Arrays.asList(
-			"balance", "cabinet", "diamond", "elastic", "freedom", "gateway", 
-			"harvest", "imagine", "journey", "kingdom", "library", "musical", 
-			"natural", "octagon", "passion", "quality", "reality", "silence", 
-			"traffic", "upgrade"
-
-		));
+	private ArrayList<String> mediumWords;
 	
-	private ArrayList<String> hardWords = new ArrayList<>(Arrays.asList(
-			"basketball", "cooperation", "development", "friendships", 
-			"greenhouse", "headquarters", "imagination", "journalists", 
-			"kindergarten", "leadership", "motivation", "negotiation", 
-			"opposition", "partnership", "questioning", "relationship", 
-			"speculation", "technology", "understood", "volunteers"
+	private ArrayList<String> hardWords;
+	
+	
+	public Dictionary() {
+		
+		easyWords = new ArrayList<>(Arrays.asList(
+				"apple", "brave", "chair", "dream", "eagle", "flame", 
+				"grape", "house", "ivory", "jelly", "knife", "lemon", 
+				"mango", "noble", "ocean", "piano", "queen", "river", "stone", 
+				"table"
+			));
+		
+		mediumWords = new ArrayList<>(Arrays.asList(
+				"balance", "cabinet", "diamond", "elastic", "freedom", "gateway", 
+				"harvest", "imagine", "journey", "kingdom", "library", "musical", 
+				"natural", "octagon", "passion", "quality", "reality", "silence", 
+				"traffic", "upgrade"
 
-		));
+			));
+		
+		hardWords = new ArrayList<>(Arrays.asList(
+				"basketball", "cooperation", "development", "friendships", 
+				"greenhouse", "headquarters", "imagination", "journalists", 
+				"kindergarten", "leadership", "motivation", "negotiation", 
+				"opposition", "partnership", "questioning", "relationship", 
+				"speculation", "technology", "understood", "volunteers"
+
+			));
+		
+	}
 	
 	
 	
 	//fix this
-	public String getRandomEasyWord() {
+	public  String getRandomEasyWord() {
         if (easyWords.isEmpty()) {
             return null; // or throw exception
         }
@@ -74,6 +87,13 @@ public class Dictionary {
         return word;
     }
 	
-
+    
+    public  void setDifficulty(int val) {
+    	difficulty = val;
+    }
+    
+    public int getDifficulty() {
+    	return difficulty;
+    }
 	
 }

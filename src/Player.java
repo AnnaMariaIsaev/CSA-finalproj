@@ -5,7 +5,7 @@ public class Player {
 
 	private String name;
 	private static int health;
-	private static String currentWord;
+	private static Word currentWord;
 	
 	private static ArrayList<String> possibleLetters;
 	private static ArrayList<String> incorrectLetters;
@@ -47,10 +47,10 @@ public class Player {
 	}
 
 	public static String getCurrentWord() {
-		return currentWord;
+		return currentWord.getActualWord();
 	}
 
-	public void setCurrentWord(String currentWord) {
+	public static void setCurrentWord(Word currentWord) {
 		Player.currentWord = currentWord;
 	}
 

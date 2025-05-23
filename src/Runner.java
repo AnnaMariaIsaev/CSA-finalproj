@@ -5,12 +5,8 @@ import java.awt.event.*;
 public class Runner extends JPanel implements ActionListener, MouseListener, KeyListener {
 
 
-=======
-public class Runner {
-	
-
-    int waveTimer = 5;
-    long ellapseTime = 0;
+   // int waveTimer = 5;
+   // long ellapseTime = 0;
     Font timeFont = new Font("Courier", Font.BOLD, 70);
     int lives = 5;
     int score = 0;
@@ -21,10 +17,9 @@ public class Runner {
     int width = 600;
     int height = 600;
 	        
-	}
 
     public Runner() {
-        JFrame f = new JFrame("Duck Hunt");
+        JFrame f = new JFrame("Hangman");
         f.setSize(new Dimension(width, height));
         f.setBackground(Color.white);
         f.add(this);
@@ -49,14 +44,54 @@ public class Runner {
         g.drawString("Lives: " + scores, 10, 50);
     }
 
+    
+    //MAIN METHOD
     public static void main(String[] arg) {
         new Runner();
       
-      System.out.println("hello world");
 		System.out.println("testing");
 		
+		Dictionary dict = new Dictionary();
+		
 		GameLogic.createPlayer();
+		
 		GameLogic.createNPC();
+		
+		
+		int diff = 1;
+		dict.setDifficulty(diff);
+		
+		if(dict.getDifficulty() == 1) {
+			String string = dict.getRandomEasyWord();
+			Word playerWord = new Word(string);
+			Player.setCurrentWord(playerWord);
+			
+			String NPCstring = dict.getRandomEasyWord();
+			Word NPCword = new Word(NPCstring);
+			
+		}
+		
+		if(dict.getDifficulty() == 2) {
+			String string = dict.getRandomMediumWord();
+			Word playerWord = new Word(string);
+			Player.setCurrentWord(playerWord);
+			
+			String NPCstring = dict.getRandomMediumWord();
+			Word NPCword = new Word(NPCstring);
+			
+		}
+		
+		if(dict.getDifficulty() == 3) {
+			String string = dict.getRandomHardWord();
+			Word playerWord = new Word(string);
+			Player.setCurrentWord(playerWord);
+			
+			String NPCstring = dict.getRandomHardWord();
+			Word NPCword = new Word(NPCstring);
+			
+		}
+		
+		System.out.println("testing... player word: " + Player.getCurrentWord());
 		
 		while(Player.getHealth() > 0 && NPCplayer.getNPCHealth() >0) {
 			GameLogic.guessLetterP();

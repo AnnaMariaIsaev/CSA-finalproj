@@ -17,7 +17,7 @@ checkGuess(char letter)
 	    private char[] hiddenWord;
 
 	    public Word(String word) {
-	        actualWord = word;
+	        setActualWord(word);
 	        hiddenWord = new char[word.length()];
 	        Arrays.fill(hiddenWord, '-');
 	    }
@@ -34,6 +34,14 @@ checkGuess(char letter)
 	    public void isComplete() {
 	        // check if fully guessed
 	    }
+
+		public String getActualWord() {
+			return actualWord;
+		}
+
+		public void setActualWord(String actualWord) {
+			this.actualWord = actualWord;
+		}
 
 	
 	
