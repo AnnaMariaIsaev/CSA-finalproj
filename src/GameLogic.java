@@ -5,26 +5,26 @@ public class GameLogic {
 	
 	static Scanner scanner = new Scanner(System.in);
 	
-	public static void createPlayer() {
+	public static void createPlayer(Word word) {
 		
 	        System.out.print("Enter your name: ");
 	        String name = scanner.nextLine();
 	        
-	        Player player = new Player(name, "placeholder");
+	        Player player = new Player(name, word);
 	        
 	        //for testing
 	        System.out.println(player.getName());
 	}
 	
 	
-	public static void createNPC() {
+	public static void createNPC(Word word) {
 		
 		String name = NPCplayer.setNPCName();
 		
-		NPCplayer NPC = new NPCplayer(name, "placeholder");
+		NPCplayer NPC = new NPCplayer(word);
 		
 		//for testng
-		System.out.println("you are playing against: " + name);
+		System.out.println("you are playing against: " + NPC.getNPCName());
 		
 	}
 	

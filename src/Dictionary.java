@@ -54,7 +54,7 @@ public class Dictionary {
             return null; // or throw exception
         }
 		
-        int random = (int)(Math.random() * 20);
+        int random = (int)(Math.random() * easyWords.size());
         String word = easyWords.get(random);
         easyWords.remove(random);
         
@@ -68,7 +68,8 @@ public class Dictionary {
             return null;
         }
         
-        int random = (int)(Math.random() * 20);
+        int random = (int)(Math.random() * mediumWords.size());
+
         String word = mediumWords.get(random);
         mediumWords.remove(random);
         
@@ -80,7 +81,8 @@ public class Dictionary {
             return null;
         }
        
-        int random = (int)(Math.random() * 20);
+        int random = (int)(Math.random() * hardWords.size());
+
         String word = hardWords.get(random);
         hardWords.remove(random);
         

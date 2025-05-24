@@ -42,6 +42,8 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
         g.setFont(myFont);
         g.setColor(Color.BLACK);
         g.drawString("Lives: " + scores, 10, 50);
+    
+      
     }
 
     
@@ -53,45 +55,57 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		
 		Dictionary dict = new Dictionary();
 		
-		GameLogic.createPlayer();
-		
-		GameLogic.createNPC();
-		
 		
 		int diff = 1;
 		dict.setDifficulty(diff);
 		
 		if(dict.getDifficulty() == 1) {
+			
 			String string = dict.getRandomEasyWord();
 			Word playerWord = new Word(string);
-			Player.setCurrentWord(playerWord);
 			
 			String NPCstring = dict.getRandomEasyWord();
 			Word NPCword = new Word(NPCstring);
 			
+			GameLogic.createPlayer(playerWord);
+			
+			GameLogic.createNPC(NPCword);
+			
 		}
 		
 		if(dict.getDifficulty() == 2) {
+			
 			String string = dict.getRandomMediumWord();
 			Word playerWord = new Word(string);
-			Player.setCurrentWord(playerWord);
 			
 			String NPCstring = dict.getRandomMediumWord();
 			Word NPCword = new Word(NPCstring);
 			
+			GameLogic.createPlayer(playerWord);
+			
+			GameLogic.createNPC(NPCword);
+			
 		}
 		
 		if(dict.getDifficulty() == 3) {
+			
 			String string = dict.getRandomHardWord();
 			Word playerWord = new Word(string);
-			Player.setCurrentWord(playerWord);
+	
 			
 			String NPCstring = dict.getRandomHardWord();
 			Word NPCword = new Word(NPCstring);
 			
+			GameLogic.createPlayer(playerWord);
+			
+			GameLogic.createNPC(NPCword);
+			
 		}
 		
+		
+		
 		System.out.println("testing... player word: " + Player.getCurrentWord());
+		System.out.println("testing... NPC word: " + NPCplayer.getNPCCurrWord());
 		
 		while(Player.getHealth() > 0 && NPCplayer.getNPCHealth() >0) {
 			GameLogic.guessLetterP();

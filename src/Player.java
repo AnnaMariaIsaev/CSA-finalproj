@@ -10,12 +10,14 @@ public class Player {
 	private static ArrayList<String> possibleLetters;
 	private static ArrayList<String> incorrectLetters;
 	
-	public Player(String name, String currentWord) {
+	public Player(String name, Word currentWord) {
 		
 		this.name = name;
 		//Player.currentWord = currentWord;
 	
 		health = 10;
+		
+		Player.currentWord = currentWord;
 		
 		incorrectLetters = new ArrayList<>();
 		possibleLetters = new ArrayList<>(Arrays.asList(
