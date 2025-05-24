@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class NPCplayer extends Player {
+public class NPCplayer {
 
 	//TO DO;
 	/*
@@ -10,8 +10,10 @@ public class NPCplayer extends Player {
 	 * 
 	 */
 	
+	private Word currentWord;
 	private static int health;
-	private String currWord;
+	private static String currWord;
+	private String name;
 
 	private static ArrayList<String> possibleLetters;
 	
@@ -19,9 +21,11 @@ public class NPCplayer extends Player {
 			"Gerardo Vaughn", "Palmer Riggs", "Connie Moyer", "Javier Mcneil", 
 			"Manual Allen", "Anderson Watkins"};
 	
-	public NPCplayer(String name, String currentWord) {
+	public NPCplayer(Word currentWord) {
 		// TODO Auto-generated constructor stub
-		super(name, currentWord);
+		
+		this.currentWord = currentWord;
+		
 		health = 10;
 		
 		possibleLetters = new ArrayList<>(Arrays.asList(
@@ -29,7 +33,10 @@ public class NPCplayer extends Player {
 			    "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
 			));
 
-	
+		
+		currWord = currentWord.getActualWord();	
+		this.name = "";
+		
 		
 	}
 
@@ -52,12 +59,16 @@ public class NPCplayer extends Player {
 		return health;
 	}
 
-	public void setNPCHealth(int health) {
-		this.health = health;
+	public void setNPCHealth(int val) {
+		health = val;
 	}
 
-	public String getNPCCurrWord() {
+	public static String getNPCCurrWord() {
 		return currWord;
+	}
+	
+	public String getNPCName() {
+		return name;
 	}
 
 	public void setNPCCurrWord(String currWord) {
@@ -78,6 +89,8 @@ public class NPCplayer extends Player {
 	public static ArrayList<String> getPossibleLetters() {
 		return possibleLetters;
 	}
+	
+	
 	
 
 }
