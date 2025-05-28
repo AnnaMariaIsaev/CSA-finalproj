@@ -77,6 +77,13 @@ public class Player {
 		return possibleLetters;
 	}
 
+	public static ArrayList<String> getIncorrect(){
+		return Player.incorrectLetters;
+	}
+	
+	public static Word getWordClass() {
+		return Player.currentWord;
+	}
 
 	
 	

@@ -24,7 +24,7 @@ public class NPCplayer {
 	public NPCplayer(Word currentWord) {
 		// TODO Auto-generated constructor stub
 		
-		this.currentWord = currentWord;
+		this.setCurrentWord(currentWord);
 		
 		health = 10;
 		
@@ -88,6 +88,14 @@ public class NPCplayer {
 	
 	public static ArrayList<String> getPossibleLetters() {
 		return possibleLetters;
+	}
+
+	public Word getCurrentWord() {
+		return currentWord;
+	}
+
+	public void setCurrentWord(Word currentWord) {
+		this.currentWord = currentWord;
 	}
 	
 	

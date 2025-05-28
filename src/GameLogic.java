@@ -43,6 +43,8 @@ public class GameLogic {
 			letter = scanner.nextLine();
 		}
 		
+		System.out.println(Player.getPossibleLetters());
+		
 		
 		String word = Player.getCurrentWord();
 		int len = word.length();
@@ -54,32 +56,26 @@ public class GameLogic {
 			Player.setHealth(Player.getHealth() - 1);
 			
 			//add code to display the list of incorrect letters on the screen
-			
-		}
+			System.out.println(Player.getIncorrect());
+		} 
 		
-		
-		for(int i = 0; i < len-1; i++) {
+		else {
 			
-			if(word.substring(i, i+1).equals(letter)) {
+
+			for (int i = 0; i < len; i++) {
 				
-				//put code here to reveal the letters in the -- placeholder
-				
+				if (word.substring(i, i + 1).equals(letter)) {
+					
+			            Player.getWordClass().setHiddenWord(i, letter.charAt(0));
+			    }
 			}
-			
+		
+
 		}
 		
-		//TO DO:
-		/*
-		 * 1) find a way to check if the guessed letter is in the word /// DONE
-		 * 2) if it isn't, add to incorrect guesses which will display
-		 * 		on the screen //// DONE
-		 * 3) correctly guessed letters should show in the word which 
-		 * 		is initially hidden by ----- 
-		 * 
-		 * **guessed letters is a second list to ensure there are no 
-		 * 		repeats, do not allow player to repeat the letters
-		 * 		in the user input
-		 */
+		System.out.println(Player.getWordClass().getHiddenWord());
+	
+		
 		
 	}
 	

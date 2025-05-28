@@ -9,13 +9,14 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
    // long ellapseTime = 0;
     Font timeFont = new Font("Courier", Font.BOLD, 70);
     int lives = 5;
-    int score = 0;
+    //int score = 0;
 
 
     Font myFont = new Font("Courier", Font.BOLD, 40);
     Background background = new Background();
     int width = 600;
     int height = 600;
+
 	        
 
     public Runner() {
@@ -32,22 +33,8 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
     }
-
-    // THIS is the correct method to override
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        background.paint(g);
-        String scores = Integer.toString(lives);
-        g.setFont(myFont);
-        g.setColor(Color.BLACK);
-        g.drawString("Lives: " + scores, 10, 50);
     
-      
-    }
-
-    
-    //MAIN METHOD
+  //MAIN METHOD
     public static void main(String[] arg) {
         new Runner();
       
@@ -113,6 +100,30 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
       
     }
 
+
+    // THIS is the correct method to override
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        background.paint(g);
+        String scores = Integer.toString(lives);
+        g.setFont(myFont);
+        g.setColor(Color.BLACK);
+        g.drawString("Lives: " + scores, 10, 50);
+        
+        
+        //this part doesn't work because it starts before
+        //the player is created
+        
+        //String pWord = Player.getCurrentWord();
+  
+       
+       
+      
+    }
+
+    
+    
     // Stub methods for the interfaces
     @Override public void actionPerformed(ActionEvent e) { repaint(); }
     @Override public void mouseClicked(MouseEvent e) {}

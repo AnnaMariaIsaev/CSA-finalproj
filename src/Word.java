@@ -22,10 +22,12 @@ checkGuess(char letter)
 	        Arrays.fill(hiddenWord, '-');
 	    }
 
+	    /*
 	    public boolean guessLetter(char letter) {
 			return false;
 	        // update hiddenWord accordingly
 	    }
+	    */
 
 	    public String getHiddenWord() {
 	        return new String(hiddenWord);
@@ -41,6 +43,10 @@ checkGuess(char letter)
 
 		public void setActualWord(String actualWord) {
 			this.actualWord = actualWord;
+		}
+		
+		public void setHiddenWord(int index, char letter) {
+			hiddenWord[index] = letter;
 		}
 
 	
