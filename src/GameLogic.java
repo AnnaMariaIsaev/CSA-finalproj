@@ -74,8 +74,42 @@ public class GameLogic {
 		}
 		
 		System.out.println(Player.getWordClass().getHiddenWord());
-	
 		
+	}
+	
+	
+	public static void guessLetterNPC() {
+		
+		String letter = NPCplayer.guessLet((int) (Math.random() * NPCplayer.getPossibleLetters().size()));
+		
+		String word = NPCplayer.getCurrentWord();
+		int len = word.length();
+		
+		if(word.contains(letter) == false) {
+			
+			NPCplayer.addIncorrectLetters(letter);
+
+			NPCplayer.setHealth(NPCplayer.getHealth() - 1);
+			
+			//add code to display the list of incorrect letters on the screen
+			System.out.println("NPC" + NPCplayer.getIncorrect());
+		} 
+		
+		else {
+			
+
+			for (int i = 0; i < len; i++) {
+				
+				if (word.substring(i, i + 1).equals(letter)) {
+					
+			            NPCplayer.getWordClass().setHiddenWord(i, letter.charAt(0));
+			    }
+			}
+			
+			System.out.println("NPC WORD: " + NPCplayer.getWordClass().getHiddenWord());
+		
+
+		}
 		
 	}
 	

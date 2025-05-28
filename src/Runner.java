@@ -92,10 +92,11 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		
 		
 		System.out.println("testing... player word: " + Player.getCurrentWord());
-		System.out.println("testing... NPC word: " + NPCplayer.getNPCCurrWord());
+		System.out.println("testing... NPC word: " + NPCplayer.getCurrentWord());
 		
 		while(Player.getHealth() > 0 && NPCplayer.getNPCHealth() >0) {
 			GameLogic.guessLetterP();
+			GameLogic.guessLetterNPC();
 		}
       
     }

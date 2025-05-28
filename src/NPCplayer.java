@@ -10,12 +10,12 @@ public class NPCplayer {
 	 * 
 	 */
 	
-	private Word currentWord;
+	private static Word currentWord;
 	private static int health;
-	private static String currWord;
 	private String name;
 
 	private static ArrayList<String> possibleLetters;
+	private static ArrayList<String> incorrectLetters;
 	
 	private static String[] names = {"Kerry Carpenter", "Tisha Andersen", 
 			"Gerardo Vaughn", "Palmer Riggs", "Connie Moyer", "Javier Mcneil", 
@@ -33,9 +33,9 @@ public class NPCplayer {
 			    "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
 			));
 
-		
-		currWord = currentWord.getActualWord();	
 		this.name = "";
+		
+		incorrectLetters = new ArrayList<>();
 		
 		
 	}
@@ -63,42 +63,53 @@ public class NPCplayer {
 		health = val;
 	}
 
-	public static String getNPCCurrWord() {
-		return currWord;
-	}
 	
 	public String getNPCName() {
 		return name;
 	}
 
-	public void setNPCCurrWord(String currWord) {
-		this.currWord = currWord;
-	}
-
-	/*
-	public ArrayList<String> getNPCGuessedLetters() {
-		return guessedLetters;
-	}
-
-	public void setNPCGuessedLetters(ArrayList<String> guessedLetters) {
-		this.guessedLetters = guessedLetters;
-	}
-	
-	*/
 	
 	public static ArrayList<String> getPossibleLetters() {
 		return possibleLetters;
 	}
-
-	public Word getCurrentWord() {
-		return currentWord;
+	
+	public static String guessLet(int index) {
+		
+		String letter = NPCplayer.getPossibleLetters().get(index);
+		NPCplayer.possibleLetters.remove(index);
+		return letter;
 	}
+
+	public static String getCurrentWord() {
+		return currentWord.getActualWord();
+	}
+	
 
 	public void setCurrentWord(Word currentWord) {
-		this.currentWord = currentWord;
+		NPCplayer.currentWord = currentWord;
+	}
+	
+	public static Word getWordClass() {
+		
+		return NPCplayer.currentWord;
 	}
 	
 	
+	public static int getHealth() {
+		return health;
+	}
+
+	public static void setHealth(int num) {
+		health = num;
+	}
+	
+	public static void addIncorrectLetters(String letter) {
+		incorrectLetters.add(letter);
+	}
+	
+	public static ArrayList<String> getIncorrect(){
+		return NPCplayer.incorrectLetters;
+	}
 	
 
 }
