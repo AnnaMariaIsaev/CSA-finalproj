@@ -1,7 +1,5 @@
 import java.util.Scanner;
-
 public class GameLogic {
-
 	
 	static Scanner scanner = new Scanner(System.in);
 	
@@ -9,9 +7,9 @@ public class GameLogic {
 		
 	        System.out.print("Enter your name: ");
 	        String name = scanner.nextLine();
-	        
+	       
 	        Player player = new Player(name, word);
-	        
+	       
 	        //for testing
 	        System.out.println(player.getName());
 	}
@@ -54,16 +52,14 @@ public class GameLogic {
 		if(word.contains(letter) == false) {
 			
 			Player.addIncorrectLetters(letter);
-
 			Player.setHealth(Player.getHealth() - 1);
 			
 			//add code to display the list of incorrect letters on the screen
 			System.out.println(Player.getIncorrect());
-		} 
+		}
 		
 		else {
 			
-
 			for (int i = 0; i < len; i++) {
 				
 				if (word.substring(i, i + 1).equals(letter)) {
@@ -72,7 +68,6 @@ public class GameLogic {
 			    }
 			}
 		
-
 		}
 		
 		System.out.println(Player.getWordClass().getHiddenWord());
@@ -90,16 +85,14 @@ public class GameLogic {
 		if(word.contains(letter) == false) {
 			
 			NPCplayer.addIncorrectLetters(letter);
-
 			NPCplayer.setHealth(NPCplayer.getHealth() - 1);
 			
 			//add code to display the list of incorrect letters on the screen
 			System.out.println("NPC" + NPCplayer.getIncorrect());
-		} 
+		}
 		
 		else {
 			
-
 			for (int i = 0; i < len; i++) {
 				
 				if (word.substring(i, i + 1).equals(letter)) {
@@ -110,7 +103,6 @@ public class GameLogic {
 			
 			System.out.println("NPC WORD: " + NPCplayer.getWordClass().getHiddenWord());
 		
-
 		}
 		
 	}
@@ -119,14 +111,12 @@ public class GameLogic {
 	
 	/*
 	 * displayWord()
-
 displayHangman()
-
 getUserInput()
-
 displayResult()
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	
 }
+
