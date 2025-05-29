@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class Player {
 
-	private String name;
+	private static String name;
 	private static int health;
 	private static Word currentWord;
 	
@@ -12,7 +12,7 @@ public class Player {
 	
 	public Player(String name, Word currentWord) {
 		
-		this.name = name;
+		Player.name = name;
 		//Player.currentWord = currentWord;
 	
 		health = 10;
@@ -32,12 +32,12 @@ public class Player {
 	
 	//auto generated getters and setters
 	
-	public String getName() {
+	public static String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		Player.name = name;
 	}
 
 	public static int getHealth() {
@@ -85,8 +85,6 @@ public class Player {
 		return Player.currentWord;
 	}
 
-	
-	
 	
 	
 }

@@ -19,12 +19,14 @@ public class GameLogic {
 	
 	public static void createNPC(Word word) {
 		
-		String name = NPCplayer.setNPCName();
+		
 		
 		NPCplayer NPC = new NPCplayer(word);
 		
+		String name = NPCplayer.setNPCName();
+		
 		//for testng
-		System.out.println("you are playing against: " + NPC.getNPCName());
+		System.out.println("you are playing against: " + NPCplayer.getNPCName());
 		
 	}
 	

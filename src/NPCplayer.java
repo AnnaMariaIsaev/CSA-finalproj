@@ -12,7 +12,7 @@ public class NPCplayer {
 	
 	private static Word currentWord;
 	private static int health;
-	private String name;
+	private static String name;
 
 	private static ArrayList<String> possibleLetters;
 	private static ArrayList<String> incorrectLetters;
@@ -33,7 +33,7 @@ public class NPCplayer {
 			    "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
 			));
 
-		this.name = "";
+		NPCplayer.name = "";
 		
 		incorrectLetters = new ArrayList<>();
 		
@@ -47,6 +47,8 @@ public class NPCplayer {
 		int random = (int)(Math.random() * 8);
 		
 		name = names[random];
+		
+		NPCplayer.name = name;
 		
 		return name;
 	}
@@ -64,7 +66,7 @@ public class NPCplayer {
 	}
 
 	
-	public String getNPCName() {
+	public static String getNPCName() {
 		return name;
 	}
 
@@ -110,6 +112,7 @@ public class NPCplayer {
 	public static ArrayList<String> getIncorrect(){
 		return NPCplayer.incorrectLetters;
 	}
+
 	
 
 }

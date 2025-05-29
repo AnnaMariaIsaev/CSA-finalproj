@@ -12,7 +12,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
     //int score = 0;
 
 
-    Font myFont = new Font("Courier", Font.BOLD, 40);
+    Font myFont = new Font("Courier", Font.BOLD, 20);
     Background background = new Background();
     int width = 600;
     int height = 600;
@@ -110,9 +110,19 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
         String scores = Integer.toString(lives);
         g.setFont(myFont);
         g.setColor(Color.BLACK);
-        g.drawString("Lives: " + scores, 10, 50);
         
         
+        
+        if(Player.getName() != null) {
+        	g.drawString("Lives: " + Integer.toString(Player.getHealth()), 60, 210);
+        	g.drawString(Player.getName(), 60, 180);
+        
+        }
+        
+        if(NPCplayer.getNPCName() != null) {
+        	g.drawString("Lives: " + Integer.toString(NPCplayer.getHealth()), 410, 210);
+        	g.drawString(NPCplayer.getNPCName(), 410, 180);
+        }
         //this part doesn't work because it starts before
         //the player is created
         
