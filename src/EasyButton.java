@@ -1,52 +1,77 @@
-import java.awt.Graphics;
-import java.awt.Toolkit;
-import java.awt.Graphics2D;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
+
 public class EasyButton {
-	private Image forward;
-	private AffineTransform tx;
-	int dir = 0; // 0-forward, 1-backward, 2-left, 3-right
-	int width, height;
-	int x, y; // position of the object
-	int vx, vy; // movement variables
-	double scaleWidth = 6.2; // change to scale image
-	double scaleHeight = 5.73; // change to scale image
-	public EasyButton() {
-		forward = getImage("easybutton.png"); // load the image for Tree
-		// alter these
-		width = 600;
-		height = 800;
-		x = 0;
-		y = 0;
-		tx = AffineTransform.getTranslateInstance(0, 0);
-		init(x, y); // initialize the location of the image
-					// use your variables
-	}
-	public EasyButton(int x, int y) {
-		this();
-		this.x = x;
-		this.y = y;
-	}
-	public void paint(Graphics g) {
-		// these are the 2 lines of code needed draw an image on the screen
-		Graphics2D g2 = (Graphics2D) g;
-		init(x, y);
-		g2.drawImage(forward, tx, null);
-	}
-	private void init(double a, double b) {
-		tx.setToTranslation(a, b);
-		tx.scale(scaleWidth, scaleHeight);
-	}
-	private Image getImage(String path) {
-		Image tempImage = null;
-		try {
-			URL imageURL = EasyButton.class.getResource("/" + path);
-			tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return tempImage;
-	}
+    private Image image;
+    private AffineTransform tx;
+
+    // Position and scaling
+    private int x, y;
+    private int width = 100;   // You can adjust this to match your image's real dimensions
+    private int height = 100;
+    private double scaleWidth = 1.5;
+    private double scaleHeight = 1.5;
+
+    // Difficulty value (optional, for gameplay logic)
+    private int difficulty = 1;
+
+    public EasyButton(int x, int y) {
+        this.x = x;
+        this.y = y;
+        this.image = getImage("easybutton.png"); // Ensure the image is in your /resources folder
+        this.tx = AffineTransform.getTranslateInstance(x, y);
+        this.tx.scale(scaleWidth, scaleHeight);
+    }
+
+    /** Draw the button on the screen manually */
+    public void paint(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        tx.setToTranslation(x, y);
+        tx.scale(scaleWidth, scaleHeight);
+        g2.drawImage(image, tx, null);
+    }
+
+    /** Check if mouse click was inside the button */
+    public boolean isClicked(int mouseX, int mouseY) {
+        int btnWidth = (int)(width * scaleWidth);
+        int btnHeight = (int)(height * scaleHeight);
+
+        return mouseX >= x && mouseX <= x + btnWidth &&
+               mouseY >= y && mouseY <= y + btnHeight;
+    }
+
+    /** Get image from resource folder */
+    private Image getImage(String path) {
+        Image tempImage = null;
+        try {
+            URL imageURL = getClass().getResource("/" + path);
+            if (imageURL != null) {
+                tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);
+            } else {
+                System.err.println("Could not load image: " + path);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tempImage;
+    }
+
+    // Optional: getter/setter for difficulty
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    // Optional: get X/Y if needed externally
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }

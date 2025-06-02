@@ -14,6 +14,48 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 
     Font myFont = new Font("Courier", Font.BOLD, 20);
     Background background = new Background();
+    
+    PlayButton playbutton = new PlayButton(130, 190);
+    
+    EasyButton easybutton = new EasyButton(50, 50);
+    MediumButton mediumbutton = new MediumButton(250, 50);
+    HardButton hardbutton = new HardButton(450, 50);
+    
+    Smile smile = new Smile();
+    Smile smile1 = new Smile();
+    
+    Head head = new Head();
+    Head head1 = new Head();
+   
+    Body body = new Body();
+    Body body1 = new Body();
+    
+    LeftArm leftarm = new LeftArm();
+    LeftArm leftarm1 = new LeftArm();
+    
+    RightArm rightarm = new RightArm();
+    RightArm rightarm1 = new RightArm();
+    
+    LeftLeg leftleg = new LeftLeg();
+    LeftLeg leftleg1 = new LeftLeg();
+    
+    RightLeg rightleg = new RightLeg();
+    RightLeg rightleg1 = new RightLeg();
+    
+    Hair hair = new Hair();
+    Hair hair1 = new Hair();
+    
+    LeftEye lefteye = new LeftEye();
+    LeftEye lefteye1 = new LeftEye();
+    
+    RightEye righteye = new RightEye();
+    RightEye righteye1 = new RightEye();
+    
+  
+    
+  
+ 
+    
     int width = 600;
     int height = 600;
 
@@ -41,12 +83,9 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		System.out.println("testing");
 		
 		Dictionary dict = new Dictionary();
+	
 		
-		
-		int diff = 1;
-		dict.setDifficulty(diff);
-		
-		if(dict.getDifficulty() == 1) {
+		if(Dictionary.getDifficulty() == 1) {
 			
 			String string = dict.getRandomEasyWord();
 			Word playerWord = new Word(string);
@@ -60,7 +99,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 			
 		}
 		
-		if(dict.getDifficulty() == 2) {
+		if(Dictionary.getDifficulty() == 2) {
 			
 			String string = dict.getRandomMediumWord();
 			Word playerWord = new Word(string);
@@ -74,7 +113,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 			
 		}
 		
-		if(dict.getDifficulty() == 3) {
+		if(Dictionary.getDifficulty() == 3) {
 			
 			String string = dict.getRandomHardWord();
 			Word playerWord = new Word(string);
@@ -90,9 +129,11 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
 		}
 		
 		
+		if(Player.getName() != null ) {
+			System.out.println("testing... player word: " + Player.getCurrentWord());
+			System.out.println("testing... NPC word: " + NPCplayer.getCurrentWord());
+		}
 		
-		System.out.println("testing... player word: " + Player.getCurrentWord());
-		System.out.println("testing... NPC word: " + NPCplayer.getCurrentWord());
 		
 		while(Player.getHealth() > 0 && NPCplayer.getNPCHealth() >0) {
 			GameLogic.guessLetterP();
@@ -107,38 +148,76 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         background.paint(g);
-        String scores = Integer.toString(lives);
+        easybutton.paint(g); 
+        mediumbutton.paint(g);
+        hardbutton.paint(g);
+        
+        playbutton.paint(g);
+
         g.setFont(myFont);
         g.setColor(Color.BLACK);
-        
-        
-        
+
         if(Player.getName() != null) {
-        	g.drawString("Lives: " + Integer.toString(Player.getHealth()), 60, 210);
-        	g.drawString(Player.getName(), 60, 180);
-        
+            g.drawString("Lives: " + Player.getHealth(), 60, 210);
+            g.drawString(Player.getName(), 60, 180);
         }
-        
+
         if(NPCplayer.getNPCName() != null) {
-        	g.drawString("Lives: " + Integer.toString(NPCplayer.getHealth()), 410, 210);
-        	g.drawString(NPCplayer.getNPCName(), 410, 180);
+            g.drawString("Lives: " + NPCplayer.getHealth(), 410, 210);
+            g.drawString(NPCplayer.getNPCName(), 410, 180);
         }
-        //this part doesn't work because it starts before
-        //the player is created
         
-        //String pWord = Player.getCurrentWord();
-  
-       
-       
-      
+        if(Dictionary.getDifficulty() == 1) {
+        	g.drawString("EASY", 100, 200);
+        }
+        
+        if(Dictionary.getDifficulty() == 2) {
+        	g.drawString("MEDIUM", 100, 200);
+        }
+        
+        if(Dictionary.getDifficulty() == 3) {
+        	g.drawString("HARD", 100, 200);
+        }
     }
+
+    
 
     
     
     // Stub methods for the interfaces
     @Override public void actionPerformed(ActionEvent e) { repaint(); }
     @Override public void mouseClicked(MouseEvent e) {}
-    @Override public void mousePressed(MouseEvent e) {}
+    
+    @Override
+    public void mousePressed(MouseEvent e) {
+        int mouseX = e.getX();
+        int mouseY = e.getY();
+
+        if (easybutton.isClicked(mouseX, mouseY)) {
+            System.out.println("Easy button clicked!");
+            Dictionary.setDifficulty(1);  
+            
+        }
+        
+        if (mediumbutton.isClicked(mouseX, mouseY)) {
+            System.out.println("medium button clicked!");
+            Dictionary.setDifficulty(2);  
+           
+        }
+        
+        if (hardbutton.isClicked(mouseX, mouseY)) {
+            System.out.println("hard button clicked!");
+            Dictionary.setDifficulty(3);
+          
+        }
+        
+        if (playbutton.isClicked(mouseX, mouseY)) {
+            System.out.println("play button clicked!");
+           
+          
+        }
+        
+    }
     @Override public void mouseReleased(MouseEvent e) {}
     @Override public void mouseEntered(MouseEvent e) {}
     @Override public void mouseExited(MouseEvent e) {}

@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class Dictionary {
 
-	private int difficulty;
+	private static int difficulty;
 	
 	/*
 	 * since there are three rounds per match, 
@@ -43,6 +43,8 @@ public class Dictionary {
 				"speculation", "technology", "understood", "volunteers"
 
 			));
+		
+		difficulty = 0;
 		
 	}
 	
@@ -90,11 +92,11 @@ public class Dictionary {
     }
 	
     
-    public  void setDifficulty(int val) {
+    public static  void setDifficulty(int val) {
     	difficulty = val;
     }
     
-    public int getDifficulty() {
+    public static int getDifficulty() {
     	return difficulty;
     }
 	
