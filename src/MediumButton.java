@@ -30,6 +30,8 @@ public class MediumButton {
         tx.setToTranslation(x, y);
         tx.scale(scaleWidth, scaleHeight);
         g2.drawImage(image, tx, null);
+        
+        
     }
 
     /** Check if mouse click was inside the button */
