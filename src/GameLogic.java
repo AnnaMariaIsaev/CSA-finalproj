@@ -11,7 +11,7 @@ public class GameLogic {
 	        Player player = new Player(name, word);
 	       
 	        //for testing
-	        System.out.println(player.getName());
+	        System.out.println(Player.getName());
 	}
 	
 	
@@ -22,6 +22,7 @@ public class GameLogic {
 		NPCplayer NPC = new NPCplayer(word);
 		
 		String name = NPCplayer.setNPCName();
+		
 		
 		//for testng
 		System.out.println("you are playing against: " + NPCplayer.getNPCName());

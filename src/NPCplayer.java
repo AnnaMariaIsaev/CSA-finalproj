@@ -21,7 +21,7 @@ public class NPCplayer {
 	public NPCplayer(Word currentWord) {
 		// TODO Auto-generated constructor stub
 		
-		this.setCurrentWord(currentWord);
+		NPCplayer.setCurrentWord(currentWord);
 		
 		health = 10;
 		
@@ -77,7 +77,7 @@ public class NPCplayer {
 		return currentWord.getActualWord();
 	}
 	
-	public void setCurrentWord(Word currentWord) {
+	public static void setCurrentWord(Word currentWord) {
 		NPCplayer.currentWord = currentWord;
 	}
 	

@@ -44,8 +44,6 @@ public class Dictionary {
 
 			));
 		
-		difficulty = 0;
-		
 	}
 	
 	
