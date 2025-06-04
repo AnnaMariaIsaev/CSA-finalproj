@@ -19,6 +19,37 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
     MediumButton mediumbutton = new MediumButton(250, 50);
     HardButton hardbutton = new HardButton(450, 50);
     
+    
+    Smile smile = new Smile();
+    
+    Head head = new Head(5, 190);
+    Head head1 = new Head(307, 190);
+    
+    Body body = new Body(7, 303);
+    Body body1 = new Body(310, 305);
+    
+    LeftArm leftarm = new LeftArm(55, 270);
+    LeftArm leftarm1 = new LeftArm(360, 270);
+    
+    RightArm rightarm = new RightArm(-10, 270);
+    RightArm rightarm1 = new RightArm(293, 270);
+    
+    LeftLeg leftleg = new LeftLeg(27, 298);
+    LeftLeg leftleg1 = new LeftLeg(330, 298);
+    
+    RightLeg rightleg = new RightLeg(27, 298);
+    RightLeg rightleg1 = new RightLeg(330, 298);
+    
+    Hair hair = new Hair();
+    Hair hair1 = new Hair();
+    
+    LeftEye lefteye = new LeftEye();
+    LeftEye lefteye1 = new LeftEye();
+    
+    RightEye righteye = new RightEye();
+    RightEye righteye1 = new RightEye();
+ 
+    
     int width = 600;
     int height = 600;
     
@@ -170,8 +201,8 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
             g.setColor(Color.BLACK);
             
             if (!nameEntered) {
-                g.drawString(message, 50, 250);
-                g.drawString(currentInput + "_", 50, 280);
+                g.drawString(message, 50, 350);
+                g.drawString(currentInput + "_", 50, 380);
             } else {
                 // Player info
                 g.drawString("Player: " + Player.getName(), 50, 100);
@@ -194,14 +225,51 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
                 
                 g.setFont(myFont);
                 if (!gameOver) {
-                    g.drawString(message, 50, 350);
-                    g.drawString(currentInput + "_", 50, 380);
+                    g.drawString(message, 50, 450);
+                    g.drawString(currentInput + "_", 50, 480);
                 } else {
                     g.drawString(message, 50, 350);
                     g.drawString("Press R to restart", 50, 380);
                 }
             }
         }
+        
+        //player body parts
+        if(Player.getName() != null && Player.getHealth() <= 9) {
+        	head.paint(g);
+        }
+        if(Player.getName() != null  && Player.getHealth() <= 8) {
+        	body.paint(g);
+        }
+        if(Player.getName() != null  && Player.getHealth() <= 7) {
+        	leftarm.paint(g);
+        }
+        if(Player.getName() != null  && Player.getHealth() <= 6) {
+        	rightarm.paint(g);
+        }
+        if(Player.getName() != null  && Player.getHealth() <= 5) {
+        	leftleg.paint(g);
+        }
+        
+        
+        //NPC body parts
+        if(Player.getName() != null && NPCplayer.getHealth() <= 9) {
+        	head1.paint(g);
+        }
+        
+        if(Player.getName() != null  && NPCplayer.getHealth() <= 8) {
+        	body1.paint(g);
+        }
+        if(Player.getName() != null  && NPCplayer.getHealth() <= 7) {
+        	leftarm1.paint(g);
+        }
+        if(Player.getName() != null  && NPCplayer.getHealth() <= 6) {
+        	rightarm1.paint(g);
+        }
+        if(Player.getName() != null  && NPCplayer.getHealth() <= 5) {
+        	leftleg1.paint(g);
+        }
+        
     }
     
     @Override
@@ -234,6 +302,8 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
                 startGame();
             }
         }
+        
+        System.out.println("X: " + mouseX + " Y: " + mouseY);
     }
     
     @Override

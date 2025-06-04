@@ -11,8 +11,8 @@ public class LeftLeg {
 	int width, height;
 	int x, y; // position of the object
 	int vx, vy; // movement variables
-	double scaleWidth = 6.2; // change to scale image
-	double scaleHeight = 5.73; // change to scale image
+	double scaleWidth = 3; // change to scale image
+	double scaleHeight = 2.2; // change to scale image
 	public LeftLeg() {
 		forward = getImage("leftleg1.png"); // load the image for Tree
 		// alter these
