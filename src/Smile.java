@@ -11,8 +11,8 @@ public class Smile {
 	int width, height;
 	int x, y; // position of the object
 	int vx, vy; // movement variables
-	double scaleWidth = 6.2; // change to scale image
-	double scaleHeight = 5.73; // change to scale image
+	double scaleWidth = 1.9; // change to scale image
+	double scaleHeight = 1.9; // change to scale image
 	public Smile() {
 		forward = getImage("smile1.png"); // load the image for Tree
 		// alter these

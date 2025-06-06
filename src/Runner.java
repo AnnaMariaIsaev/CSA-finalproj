@@ -20,7 +20,8 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
     HardButton hardbutton = new HardButton(450, 50);
     
     
-    Smile smile = new Smile();
+    Smile smile = new Smile(75, 240);
+    Smile smile1 = new Smile(378, 240);
     
     Head head = new Head(5, 190);
     Head head1 = new Head(307, 190);
@@ -37,17 +38,18 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
     LeftLeg leftleg = new LeftLeg(27, 298);
     LeftLeg leftleg1 = new LeftLeg(330, 298);
     
-    RightLeg rightleg = new RightLeg(27, 298);
-    RightLeg rightleg1 = new RightLeg(330, 298);
+    RightLeg rightleg = new RightLeg(-35, 277);
+    RightLeg rightleg1 = new RightLeg(268, 277);
     
-    Hair hair = new Hair();
-    Hair hair1 = new Hair();
+    Hair hair = new Hair(32, 175);
+    Hair hair1 = new Hair(335, 175);
     
-    LeftEye lefteye = new LeftEye();
-    LeftEye lefteye1 = new LeftEye();
+    LeftEye lefteye = new LeftEye(-100, 100);
+    LeftEye lefteye1 = new LeftEye(208, 100);
+   
     
-    RightEye righteye = new RightEye();
-    RightEye righteye1 = new RightEye();
+    LeftEye righteye = new LeftEye(-81, 100);
+    LeftEye righteye1 = new LeftEye(228, 100);
  
     
     int width = 600;
@@ -180,6 +182,8 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
         
         // Only show menu buttons if game hasn't started
         if (!gameStarted) {
+        
+        	
             easybutton.paint(g);
             mediumbutton.paint(g);
             hardbutton.paint(g);
@@ -225,15 +229,19 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
                 
                 g.setFont(myFont);
                 if (!gameOver) {
-                    g.drawString(message, 50, 450);
-                    g.drawString(currentInput + "_", 50, 480);
+                    g.drawString(message, 50, 465);
+                    g.drawString(currentInput + "_", 50, 495);
                 } else {
-                    g.drawString(message, 50, 350);
-                    g.drawString("Press R to restart", 50, 380);
+                    g.drawString(message, 50, 465);
+                    g.drawString("Press R to restart", 50, 495);
                 }
             }
         }
         
+        
+        //draW body parts based on how many lives are left
+        if(gameStarted) {
+        	
         //player body parts
         if(Player.getName() != null && Player.getHealth() <= 9) {
         	head.paint(g);
@@ -250,6 +258,22 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
         if(Player.getName() != null  && Player.getHealth() <= 5) {
         	leftleg.paint(g);
         }
+        if(Player.getName() != null  && Player.getHealth() <= 4) {
+        	rightleg.paint(g);
+        }
+        if(Player.getName() != null  && Player.getHealth() <= 3) {
+        	hair.paint(g);
+        }
+        if(Player.getName() != null  && Player.getHealth() <= 2) {
+        	lefteye.paint(g);
+        }
+        if(Player.getName() != null  && Player.getHealth() <= 1) {
+        	righteye.paint(g);
+        }
+        if(Player.getName() != null  && Player.getHealth() <= 0) {
+        	smile.paint(g);
+        }
+       
         
         
         //NPC body parts
@@ -269,6 +293,25 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
         if(Player.getName() != null  && NPCplayer.getHealth() <= 5) {
         	leftleg1.paint(g);
         }
+        if(Player.getName() != null  && NPCplayer.getHealth() <= 4) {
+        	rightleg1.paint(g);
+        }
+        if(Player.getName() != null  && NPCplayer.getHealth() <= 3) {
+        	hair1.paint(g);
+        }
+        if(Player.getName() != null  && NPCplayer.getHealth() <= 2) {
+        	lefteye1.paint(g);
+        }
+        
+        if(Player.getName() != null  && NPCplayer.getHealth() <= 1) {
+        	righteye1.paint(g);
+        }
+        
+        if(Player.getName() != null  && NPCplayer.getHealth() <= 0) {
+        	smile1.paint(g);
+        }
+        
+        } 
         
     }
     
@@ -300,6 +343,8 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
             
             if (playbutton.isClicked(mouseX, mouseY) && Dictionary.getDifficulty() != 0) {
                 startGame();
+                
+                
             }
         }
         
@@ -327,7 +372,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
         if (gameStarted && !nameEntered) {
             // Name input
             if (keyCode == KeyEvent.VK_BACK_SPACE && currentInput.length() > 0) {
-                currentInput = currentInput.substring(0, currentInput.length() - 1);
+               currentInput = currentInput.substring(0, currentInput.length() - 1);
             } else if (keyCode == KeyEvent.VK_ENTER && !currentInput.trim().isEmpty()) {
                 playerName = currentInput.trim();
                 nameEntered = true;
@@ -345,7 +390,12 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
                 currentInput = String.valueOf(key);
             }
         } else if (gameOver && (key == 'r' || key == 'R')) {
-            // Restart game
+        	
+        	//reset health to 0 so that the body parts are hidden until health goes down
+        	Player.setHealth(10);
+        	NPCplayer.setHealth(10);
+        	
+        	//reset all other game components
             gameStarted = false;
             difficultySet = false;
             nameEntered = false;
@@ -355,6 +405,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
             currentInput = "";
             message = "";
             Dictionary.setDifficulty(0);
+     
         }
         
         repaint();
