@@ -59,6 +59,9 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
     private String currentInput = "";
     private String message = "";
     
+    //add music
+    SimpleAudioPlayer backgroundMusic = new SimpleAudioPlayer("hangmanMusic.wav", true);
+    
     public Runner() {
         JFrame f = new JFrame("Hangman");
         f.setSize(new Dimension(width, height));
