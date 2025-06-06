@@ -2,39 +2,23 @@ import java.util.Arrays;
 
 public class Word {
 
-/*
- * getWord()
-
-getCurrentState() (returns the word with blanks for unguessed letters)
-
-checkGuess(char letter)
-
- * 
- * 	
- */
-	
 	    private String actualWord;
 	    private char[] hiddenWord;
 
 	    public Word(String word) {
+	    	
+	    	//set string version of word to input from dictionary
 	        setActualWord(word);
 	        hiddenWord = new char[word.length()];
+	        
+	        //create hidden word that replaces chars for -
 	        Arrays.fill(hiddenWord, '-');
 	    }
 
-	    /*
-	    public boolean guessLetter(char letter) {
-			return false;
-	        // update hiddenWord accordingly
-	    }
-	    */
-
+	 
+	    //standard getters and setterse
 	    public String getHiddenWord() {
 	        return new String(hiddenWord);
-	    }
-
-	    public void isComplete() {
-	        // check if fully guessed
 	    }
 
 		public String getActualWord() {

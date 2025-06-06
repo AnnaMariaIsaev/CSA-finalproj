@@ -1,30 +1,26 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 public class NPCplayer {
-	//TO DO;
-	/*
-	 * 1) create method that assigns the NPC a random name
-	 * 2)
-	 *
-	 */
-	
+
+	//initialize variables
 	private static Word currentWord;
 	private static int health;
 	private static String name;
 	private static ArrayList<String> possibleLetters;
 	private static ArrayList<String> incorrectLetters;
 	
+	//create name list to pick for NPC names
 	private static String[] names = {"Kerry Carpenter", "Tisha Andersen",
 			"Gerardo Vaughn", "Palmer Riggs", "Connie Moyer", "Javier Mcneil",
 			"Manual Allen", "Anderson Watkins"};
 	
 	public NPCplayer(Word currentWord) {
-		// TODO Auto-generated constructor stub
 		
 		NPCplayer.setCurrentWord(currentWord);
 		
 		health = 10;
 		
+		//available letters to pick from
 		possibleLetters = new ArrayList<>(Arrays.asList(
 			    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
 			    "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
@@ -35,6 +31,8 @@ public class NPCplayer {
 		
 		
 	}
+	
+	//method to pick random name for NPC
 	public static String setNPCName() {
 		
 		String name = "";
@@ -67,12 +65,16 @@ public class NPCplayer {
 		return possibleLetters;
 	}
 	
+	
+	//helper method for NPC randomized letter
 	public static String guessLet(int index) {
 		
 		String letter = NPCplayer.getPossibleLetters().get(index);
 		NPCplayer.possibleLetters.remove(index);
 		return letter;
 	}
+	
+	//get string version of word
 	public static String getCurrentWord() {
 		return currentWord.getActualWord();
 	}
@@ -81,6 +83,7 @@ public class NPCplayer {
 		NPCplayer.currentWord = currentWord;
 	}
 	
+	//access methods of NPC word
 	public static Word getWordClass() {
 		
 		return NPCplayer.currentWord;
@@ -90,6 +93,7 @@ public class NPCplayer {
 	public static int getHealth() {
 		return health;
 	}
+	
 	public static void setHealth(int num) {
 		health = num;
 	}

@@ -227,6 +227,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
                     g.drawString("Wrong: " + Player.getIncorrect(), 50, 220);
                 }
                 
+                //draw instruction prompts on screen (select letter, etc.)
                 g.setFont(myFont);
                 if (!gameOver) {
                     g.drawString(message, 50, 465);
@@ -275,7 +276,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
         }
        
         
-        
+        //reveal NPC body parts based on lives
         //NPC body parts
         if(Player.getName() != null && NPCplayer.getHealth() <= 9) {
         	head1.paint(g);
@@ -325,9 +326,12 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
     
     @Override
     public void mousePressed(MouseEvent e) {
+    	
         int mouseX = e.getX();
         int mouseY = e.getY();
         
+        
+        //select difficulty based on which button is clicked
         if (!gameStarted) {
             if (easybutton.isClicked(mouseX, mouseY)) {
                 Dictionary.setDifficulty(1);
@@ -341,6 +345,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
                 Dictionary.setDifficulty(3);
             }
             
+            //start the game if difficulty is not empty
             if (playbutton.isClicked(mouseX, mouseY) && Dictionary.getDifficulty() != 0) {
                 startGame();
                 
@@ -348,6 +353,7 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
             }
         }
         
+        //check coordinates || FOR TESTING
         System.out.println("X: " + mouseX + " Y: " + mouseY);
     }
     
@@ -366,29 +372,56 @@ public class Runner extends JPanel implements ActionListener, MouseListener, Key
     
     @Override
     public void keyPressed(KeyEvent e) {
+    	
+    	//store what key is pressed
         char key = e.getKeyChar();
         int keyCode = e.getKeyCode();
         
         if (gameStarted && !nameEntered) {
-            // Name input
+        
+            //name input
+        	
+        	//if backspace is pressed delete last character
             if (keyCode == KeyEvent.VK_BACK_SPACE && currentInput.length() > 0) {
-               currentInput = currentInput.substring(0, currentInput.length() - 1);
+               
+            	currentInput = currentInput.substring(0, currentInput.length() - 1);
+            	
             } else if (keyCode == KeyEvent.VK_ENTER && !currentInput.trim().isEmpty()) {
-                playerName = currentInput.trim();
+               
+            	//if enter is pressed set the name to the input
+            	playerName = currentInput.trim();
                 nameEntered = true;
                 initializeGameLogic();
+                
             } else if (Character.isLetter(key) && currentInput.length() < 15) {
-                currentInput += key;
+               
+            	//if character is less than 15 characters long
+            	//add whatever keys are being pressed to the input
+            	currentInput += key;
+            	
             }
+            
+            //all of this code is for getting what letter the player is guessing
         } else if (gameStarted && nameEntered && waitingForPlayerInput && !gameOver) {
             // Letter guessing
             if (keyCode == KeyEvent.VK_BACK_SPACE && currentInput.length() > 0) {
-                currentInput = currentInput.substring(0, currentInput.length() - 1);
+               
+            	//remove character if backspace
+            	currentInput = currentInput.substring(0, currentInput.length() - 1);
+            
             } else if (keyCode == KeyEvent.VK_ENTER && !currentInput.trim().isEmpty()) {
-                processPlayerGuess(currentInput.trim());
+                
+            	//set the guess to that letter if enter is pressed
+            	processPlayerGuess(currentInput.trim());
+            
             } else if (Character.isLetter(key) && currentInput.length() < 1) {
-                currentInput = String.valueOf(key);
+                
+            	//set the input to whatever key is pressed
+            	currentInput = String.valueOf(key);
+            
             }
+            
+            //if you restart the game reset everything
         } else if (gameOver && (key == 'r' || key == 'R')) {
         	
         	//reset health to 0 so that the body parts are hidden until health goes down

@@ -3,6 +3,7 @@ import java.util.Arrays;
 
 public class Player {
 
+	//initialize variables
 	private static String name;
 	private static int health;
 	private static Word currentWord;
@@ -13,19 +14,18 @@ public class Player {
 	public Player(String name, Word currentWord) {
 		
 		Player.name = name;
-		//Player.currentWord = currentWord;
 	
 		health = 10;
 		
 		Player.currentWord = currentWord;
 		
 		incorrectLetters = new ArrayList<>();
+		
+		//create possible letters list to pick letters
 		possibleLetters = new ArrayList<>(Arrays.asList(
 			    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
 			    "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
 			));
-
-	
 		
 	}
 
@@ -61,12 +61,6 @@ public class Player {
 		int val = possibleLetters.indexOf(letter);
 		possibleLetters.remove(val);
 	}
-
-	/*
-	public static void addGuessedLetters(String letter) {
-		guessedLetters.add(letter);
-	}
-	*/
 	
 	public static void addIncorrectLetters(String letter) {
 		incorrectLetters.add(letter);
@@ -81,6 +75,8 @@ public class Player {
 		return Player.incorrectLetters;
 	}
 	
+	
+	//use to access methods of the player word in other classes
 	public static Word getWordClass() {
 		return Player.currentWord;
 	}

@@ -11,6 +11,7 @@ public class Dictionary {
 	 * 
 	 */
 	
+	//initialize word lists
 	private ArrayList<String> easyWords;
 	
 	private ArrayList<String> mediumWords;
@@ -19,6 +20,8 @@ public class Dictionary {
 	
 	
 	public Dictionary() {
+		
+		//create word lists for each difficulty (random words)
 		
 		easyWords = new ArrayList<>(Arrays.asList(
 				"apple", "brave", "chair", "dream", "eagle", "flame", 
@@ -47,8 +50,8 @@ public class Dictionary {
 	}
 	
 	
+	//get random word to use as input for the player and NPC in other classes
 	
-	//fix this
 	public  String getRandomEasyWord() {
         if (easyWords.isEmpty()) {
             return null; // or throw exception
@@ -90,6 +93,7 @@ public class Dictionary {
     }
 	
     
+    //set difficulty when buttons are pressed (used  in runner)
     public static  void setDifficulty(int val) {
     	difficulty = val;
     }
